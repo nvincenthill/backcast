@@ -4,7 +4,7 @@ describe('VideoListEntryView', function() {
   beforeEach(function() {
     model = new Video(fakeVideoData[0]);
     sinon.spy(model, 'select');
-
+debugger;
     view = new VideoListEntryView({ model: model });
     view.template = _.template('<div class="video-list-entry-title"><%= snippet.title %></div>');
     view.render();  // re-render with test template
