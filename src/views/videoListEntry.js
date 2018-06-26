@@ -1,20 +1,24 @@
 var VideoListEntryView = Backbone.View.extend({
 
-  el: '.video-list',
-
   template: templateURL('src/templates/videoListEntry.html'),
-
+ 
   initialize: function() {
-
+    this.listenTo(this.model, "change", this.render);
+    console.log(this);
   },
 
   render: function() {
-    console.log('>>>>>before', this.$el);
     this.$el.append(this.template(this.model.attributes));
-    console.log('>>>>>after', this.$el);
+
+    // posible solution to the click handler problem
+    this.$el.find('video-list-entry-title').on('click', this.handleClick.bind(this));
     return this.$el;
+    
   },
 
-
-
+  //FIXME: handleClick running 5 times for each click!
+  handleClick: function() {
+    console.log('you are clicking videoListEntry'); 
+    this.model.select();
+  }
 });
