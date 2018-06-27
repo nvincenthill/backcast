@@ -6,7 +6,6 @@ describe('VideoListEntryView', function() {
     sinon.spy(model, 'select');
 
     view = new VideoListEntryView({ model: model });
-    console.log(view);
     view.template = _.template('<div class="video-list-entry-title"><%= snippet.title %></div>');
     view.render();  // re-render with test template
   });
